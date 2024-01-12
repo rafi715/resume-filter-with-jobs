@@ -1,0 +1,88 @@
+{% extends 'user-create-resume.html' %}
+
+{% block page-content-tab %}
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="container tab-pane active"><br>
+            <form method="post" action="{% if professional_instance %}{% url 'user-create-resume-professional' professional_instance.id %}{% else %}{% url 'user-create-resume-pro' %}{% endif %}">
+                {% csrf_token %}
+                {{ pro_info_form.management_form }}
+                {% for form in pro_info_form %}
+                    <div class="row mt-2">
+                        <div class="col">
+                            <label class="text-light">{{ form.company_name.label }}
+                            {% if form.fields.company_name.required %}
+                                <span class="text-warning">*</span>
+                            {% endif %}
+                            </label>
+                            {{ form.company_name }}
+                            {% if form.company_name.errors %}
+                                <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ form.company_name.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col">
+                            <label class="text-light">{{ form.job_title.label }}
+                                {% if form.fields.job_title.required %}
+                                    <span class="text-warning">*</span>
+                                {% endif %}
+                            </label>
+                            {{ form.job_title }}
+                            {% if form.job_title.errors %}
+                                <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ form.job_title.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col">
+                            <label class="text-light">{{ form.start_experience.label }}
+                                {% if form.fields.start_experience.required %}
+                                    <span class="text-warning">*</span>
+                                {% endif %}
+                            </label>
+                            {{ form.start_experience }}
+                            {% if form.start_experience.errors %}
+                                <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ form.start_experience.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col">
+                            <label class="text-light">{{ form.end_experience.label }}
+                                {% if form.fields.end_experience.required %}
+                                    <span class="text-warning">*</span>
+                                {% endif %}
+                            </label>
+                            {{ form.end_experience }}
+                            {% if form.end_experience.errors %}
+                                <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ form.end_experience.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <label class="text-light">{{ form.official_description.label }}
+                                {% if form.fields.official_description.required %}
+                                    <span class="text-warning">*</span>
+                                {% endif %}
+                            </label>
+                            {{ form.official_description }}
+                            {% if form.official_description.errors %}
+                                <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ form.official_description.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <label class="text-light">{{ form.DELETE.label }}</label>
+                            {{ form.DELETE }}
+                        </div>
+                    </div>
+                    <hr>
+                {% endfor %}
+                    <div class="row mt-2">
+                        <div class="col">
+                            <button type="submit" style="background-color:#149ddd;" class="btn btn-md text-light float-end">
+                                Save Information
+                            </button>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

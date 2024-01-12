@@ -1,0 +1,75 @@
+{% extends 'user-master.html' %}
+
+{% load static %}
+
+{% block page-title %} Jobs {% endblock %}
+
+{% block page-styles %} {% endblock %}
+
+{% block hero-section %}{% endblock %}
+
+{% block page-content %}
+    <!-- ======= About Section ======= -->
+    <section id="about">
+        <div class="container" data-aos="fade-up">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">Job Details</h3>
+                    <div class="section-title-divider"></div>
+                </div>
+            </div>
+        </div>
+        <div class="container about-container" data-aos="fade-up" data-aos-delay="200">
+            <div class="row">
+                <div class="col-lg-6 about-img">
+                    <img src="{{ current_job.ads.url }}" alt="" width="100%">
+                </div>
+                <div class="col-md-6 about-content">
+                    <h2 class="about-title">{{ current_job.job_title }}</h2>
+                    <div class="row mb-3">
+                        <div class="col-md-8"><b>Last Date: </b> {{ current_job.last_date }}</div>
+                        <div class="col-md-4">
+                            <a href="javaScript:" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-sm btn-success">Apply Now</a>
+                        </div>
+                    </div>
+                    <p class="about-text">
+                        {{ current_job.job_description|safe }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section><!-- End About Section -->
+
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header bg-dark ">
+                    <h4 class="modal-title text-light">Apply for Job</h4>
+                    <button type="button" class="btn-close text-light" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            {% for field in apply_form %}
+                            <div class="col">
+                                {{ field }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 float-right mt-3">
+                                <input type="submit" class="btn btn-sm btn-success float-end" name="applyNow"
+                                       value="Apply Now">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block page-scripts %}{% endblock %}

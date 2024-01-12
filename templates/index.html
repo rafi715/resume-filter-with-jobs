@@ -1,0 +1,299 @@
+{% extends 'main-master.html' %}
+
+{% load static %}
+
+{% block page-title %} Home {% endblock %}
+
+{% block page-styles %} {% endblock %}
+
+{% block hero-section %}
+    <!-- ======= Hero Section ======= -->
+    <section id="hero">
+        <div class="hero-container">
+            <div data-aos="fade-in">
+                <h1>Welcome to Parsingify</h1>
+                <h2>We <span class="typed" data-typed-items="streamline resume data extraction,
+                enhance candidate information retrieval, improve CV parsing accuracy, automate applicant data handling,
+                optimize recruitment processes efficiently"></span></h2>
+                <div class="actions">
+                    <a href="#about" class="btn-get-started">Get Strated</a>
+                    <a href="#services" class="btn-services">Our Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block page-content %}
+        <!-- ======= About Section ======= -->
+        <section id="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="section-title">About Us</h3>
+                        <div class="section-title-divider"></div>
+                        <p class="section-description">"Unlocking Candidate Potential with Parsingify: Your CV Parsing
+                            Solution."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container about-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="row">
+
+                    <div class="col-lg-6 about-img">
+                        <img src="{% static 'img/about-img.jpg' %}" alt="">
+                    </div>
+
+                    <div class="col-md-6 about-content">
+                        <h2 class="about-title">We provide great services and ideass</h2>
+                        <p class="about-text">
+                            Parsingify is a robust CV parsing tool with a range of features for extracting crucial
+                            information from resumes and CVs. It excels in accurately identifying names, extracting
+                            contact details, parsing work experience and education history, and identifying relevant
+                            skills and keywords.
+                        </p>
+                        <p class="about-text">
+                            Additionally, it prioritizes data security, offers a user-friendly interface, and provides
+                            customer support. Overall, Parsingify simplifies and streamlines the hiring process,
+                            ensuring accurate and efficient CV parsing to help organizations save time and make informed
+                            hiring decisions.
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+
+        <!-- ======= Services Section ======= -->
+        <section id="services">
+            <div class="container">
+                <div class="row" data-aos="fade-up">
+                    <div class="col-md-12">
+                        <h3 class="section-title">Our Services</h3>
+                        <div class="section-title-divider"></div>
+                        <p class="section-description">
+                            "Parsingify offers precise CV parsing, data security, customization, integration,
+                            user-friendly interface, and dedicated customer support for streamlined hiring processes."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row" data-aos="fade-up" data-aos-delay="200">
+                    <div class="col-lg-4 col-md-6 service-item">
+                        <h4 class="service-title"><a href="">Resume Parsing:</a></h4>
+                        <p class="service-description">
+                            Accurate extraction of candidate details, including names, contact information, work
+                            experience, education history, skills, and keywords.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 service-item">
+                        <h4 class="service-title"><a href="">Data Security:</a></h4>
+                        <p class="service-description">
+                            Prioritizing the protection and privacy of candidate information in compliance with industry
+                            standards and regulations.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 service-item">
+                        <h4 class="service-title"><a href="">Customization: </a></h4>
+                        <p class="service-description">
+                            Tailoring parsing rules to specific industries or job roles for precise data extraction.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 service-item">
+                        <h4 class="service-title"><a href="">Integration:</a></h4>
+                        <p class="service-description">
+                            Seamlessly integrating with applicant tracking systems (ATS) and HR software for efficient
+                            data transfer and automation.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 service-item">
+                        <h4 class="service-title"><a href="">User-Friendly Interface: </a></h4>
+                        <p class="service-description">
+                            Intuitive design for ease of use by HR professionals and recruiters.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 service-item">
+                        <h4 class="service-title"><a href="">Customer Support: </a></h4>
+                        <p class="service-description">
+                            Providing assistance and documentation to optimize CV parsing capabilities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Services Section -->
+
+        <!-- ======= Subscrbe Section ======= -->
+        <section id="subscribe">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3 class="subscribe-title">Subscribe For Updates</h3>
+                        <p class="subscribe-text">
+                            Join our 1000+ subscribers and get access to the latest tools, freebies, product
+                            announcements and much more!
+                        </p>
+                    </div>
+                    <div class="col-md-4 subscribe-btn-container">
+                        <a class="subscribe-btn" href="#">Subscribe Now</a>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Subscribe Section -->
+
+        <!-- ======= Testimonials Section ======= -->
+        <section id="testimonials">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="section-title">Testimonials</h3>
+                        <div class="section-title-divider"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="profile">
+                            <div class="pic"><img src="{% static 'img/client-1.jpg' %}" alt=""></div>
+                            <h4>John Smith, </h4>
+                            <span>HR Manager at XYZ Company</span>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="quote">
+                            <b><img src="{% static 'img/quote_sign_left.png' %}" alt=""></b>
+                            "Using Parsingify has revolutionized our recruitment process. It's incredibly accurate and
+                            time-saving, helping us find the right candidates faster than ever before!"
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="quote">
+                            <b><img src="{% static 'img/quote_sign_left.png' %}" alt=""></b>
+                            "Parsingify has made our hiring process a breeze. It effortlessly extracts vital candidate
+                            data, and the customer support is exceptional. Highly recommend!"
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="profile">
+                            <div class="pic"><img src="{% static 'img/client-2.jpg' %}" alt=""></div>
+                            <h4>Sarah Johnson,</h4>
+                            <span> Talent Acquisition Specialist</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Testimonials Section -->
+
+        <!-- ======= Team Section ======= -->
+        <section id="team">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="section-title">Our Team</h3>
+                        <div class="section-title-divider"></div>
+                        <!-- <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p> -->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="member">
+                            <div class="pic"><img src="{% static 'img/client-2.jpg' %}" alt=""></div>
+                            <h4>Aqsa Syed</h4>
+                            <span>Chief Executive Officer</span>
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="member">
+                            <div class="pic"><img src="{% static 'img/team/team-2.jpg' %}" alt=""></div>
+                            <h4>Summiya Zafar</h4>
+                            <span>Product Manager</span>
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="member">
+                            <div class="pic"><img src="{% static 'img/team/team-3.jpg' %}" alt=""></div>
+                            <h4>William Anderson</h4>
+                            <span>CTO</span>
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="member">
+                            <div class="pic"><img src="{% static 'img/team/team-4.jpg' %}" alt=""></div>
+                            <h4>Saba Kaleem</h4>
+                            <span>Accountant</span>
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section><!-- End Team Section -->
+
+        <!-- ======= Contact Section ======= -->
+        <section id="contact">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="section-title">Contact Us</h3>
+                        <div class="section-title-divider"></div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-3 col-md-4">
+                        <div class="info">
+                            <div>
+                                <i class="bi bi-geo-alt"></i>
+                                <p>A108 Adam Street<br>Rawalpindi,islamabad</p>
+                            </div>
+
+                            <div>
+                                <i class="bi bi-envelope"></i>
+                                <p>aqsasyed.bsse@gmail.com</p>
+                            </div>
+
+                            <div>
+                                <i class="bi bi-phone"></i>
+                                <p>+92 5589 55488 55</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 col-md-8">
+                        {% include 'main-contactus.html' %}
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Contact Section -->
+{% endblock %}
+
+{% block page-scripts %}{% endblock %}

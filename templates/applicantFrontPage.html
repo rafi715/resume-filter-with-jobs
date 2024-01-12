@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>make your cv</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/Rimg/favicon.png" rel="icon">
+    <link href="assets/Rimg/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/Rvendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/Rvendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/Rvendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/Rvendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/Rvendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/Rvendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/Rstyle.css" rel="stylesheet">
+    <link href="assets/css/aplicationForm.css" rel="stylesheet">
+    <!-- =======================================================
+    * Template Name: iPortfolio
+    * Updated: Jul 27 2023 with Bootstrap v5.3.1
+    * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+
+<!-- ======= Mobile nav toggle button ======= -->
+<i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+<!-- ======= Header ======= -->
+<header id="header">
+    <div class="d-flex flex-column">
+
+        <div class="profile">
+            <img src="assets/Rimg/profile-img.jpg" alt="" class="img-fluid rounded-circle">
+            <h1 class="text-light"><a href="index.html">Alex Smith</a></h1>
+            <div class="social-links mt-3 text-center">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+        </div>
+
+        <nav id="navbar" class="nav-menu navbar">
+            <ul>
+                <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a>
+                </li>
+                <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>profile</span></a></li>
+                <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a>
+                </li>
+                <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i>
+                    <span>Portfolio</span></a></li>
+                <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a>
+                </li>
+                <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a>
+                </li>
+
+            </ul>
+        </nav><!-- .nav-menu -->
+    </div>
+</header><!-- End Header -->
+
+<main id="main">
+
+    <div class="container">
+        <h2>Professional Resume Form</h2>
+        <form>
+            <div class="form-group">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" name="full-name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+                <label>Date of Birth:</label>
+                <input type="date" name="date-of-birth" required>
+            </div>
+            <div class="form-group radio-group">
+                <label>Gender:</label>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+            </div>
+            <div class="form-group radio-group">
+                <label>Language:</label>
+                <input type="radio" id="urdu" name="language" value="urdu">
+                <label for="urdu">Urdu</label>
+                <input type="radio" id="english" name="language" value="english">
+                <label for="english">English</label>
+            </div>
+            <div class="form-group">
+                <label for="education">Education:</label>
+                <input type="text" id="education" name="education">
+            </div>
+            <div class="form-group radio-group">
+                <label for="start-date">Start Date:</label>
+                <input type="date" id="start-date" name="start-date" required>
+                <label for="end-date">End Date:</label>
+                <input type="date" id="end-date" name="end-date" required>
+            </div>
+            <div class="form-group">
+                <button type="button" id="add-education">Add More Education</button>
+            </div>
+            <div class="form-group">
+                <label for="certifications">Certifications:</label>
+                <input type="text" id="certifications" name="certifications">
+            </div>
+            <div class="form-group">
+                <button type="button" id="add-certifications">Add More Certifications</button>
+            </div>
+            <div class="form-group">
+                <label for="picture">Upload Picture:</label>
+                <input type="file" id="picture" name="picture" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Apply</button>
+            </div>
+        </form>
+    </div>
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer_container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>iPortfolio</span></strong>
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/ -->
+                Designed by <a href="https://bootstrapmade.com/"> Aqsa</a>
+            </div>
+        </div>
+    </footer><!-- End  Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/Rvendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/Rvendor/aos/aos.js"></script>
+    <script src="assets/Rvendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/Rvendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/Rvendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/Rvendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/Rvendor/typed.js/typed.umd.js"></script>
+    <script src="assets/Rvendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/Rvendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Education and Certifications counters
+        let educationCounter = 1;
+        let certificationsCounter = 1;
+
+        // Function to add more Education fields
+        document.getElementById("add-education").addEventListener("click", function () {
+            const educationContainer = document.getElementById("education-container");
+            educationCounter++;
+            const newEducationGroup = document.createElement("div");
+            newEducationGroup.classList.add("education-group");
+            newEducationGroup.innerHTML = `
+        <div class="form-group">
+          <label for="education-${educationCounter}">Education:</label>
+          <input type="text" id="education-${educationCounter}" name="education-${educationCounter}">
+        </div>
+        <div class="form-group radio-group">
+          <label for="start-date-${educationCounter}">Start Date:</label>
+          <input type="date" id="start-date-${educationCounter}" name="start-date-${educationCounter}" required>
+          <label for="end-date-${educationCounter}">End Date:</label>
+          <input type="date" id="end-date-${educationCounter}" name="end-date-${educationCounter}" required>
+        </div>
+      `;
+            educationContainer.appendChild(newEducationGroup);
+        });
+
+        // Function to add more Certifications fields
+        document.getElementById("add-certifications").addEventListener("click", function () {
+            const certificationsContainer = document.getElementById("certifications-container");
+            certificationsCounter++;
+            const newCertificationsGroup = document.createElement("div");
+            newCertificationsGroup.classList.add("certifications-group");
+            newCertificationsGroup.innerHTML = `
+        <div class="form-group">
+          <label for="certifications-${certificationsCounter}">Certifications:</label>
+          <input type="text" id="certifications-${certificationsCounter}" name="certifications-${certificationsCounter}">
+        </div>
+      `;
+            certificationsContainer.appendChild(newCertificationsGroup);
+        });
+    </script>
+</body>
+
+</html>

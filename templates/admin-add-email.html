@@ -1,0 +1,68 @@
+{% extends 'admin-master.html' %}
+
+{% load static %}
+
+{% block page-title %} Admin - Email Listing {% endblock %}
+
+{% block page-styles %}
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+        }
+        .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused){
+            height: 200px !important;
+        }
+        .form-control{
+            border-radius: 0 !important;
+        }
+    </style>
+{% endblock %}
+
+{% block page-content %}
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title"><h2>Add Email Details</h2></div>
+            <div class="row">
+                <div class="col-lg-10 pt-4 pt-lg-0 content mx-auto" data-aos="fade-left">
+                    <form method="post">
+                        {% csrf_token %}
+                        {% for field in email_form %}
+                            <div class="row mt-2">
+                                <div class="col">
+                                    <label >{{ field.label }}</label>
+                                    {{ field }}
+                                    {% if field.errors %}
+                                        <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ field.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <div class="row mt-2">
+                            <div class="col">
+                                <button type="submit" style="background-color:#149ddd;" class="btn btn-md text-light float-end">Save Email</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section><!-- End About Section -->
+{% endblock %}
+
+{% block page-scripts %}
+    <script src="{% static 'ckeditor5/ckeditor.js' %}"></script>
+    <script>
+        function initEditor(id){
+            ClassicEditor.create( document.querySelector( id ), {
+                // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+            }).then( editor => {
+                window.editor = editor;
+            }).catch( err => {
+                console.error( err.stack );
+            });
+        }
+        initEditor('#id_email_description');
+    </script>
+{% endblock %}

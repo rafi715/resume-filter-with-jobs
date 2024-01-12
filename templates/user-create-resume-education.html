@@ -1,0 +1,88 @@
+{% extends 'user-create-resume.html' %}
+
+{% block page-content-tab %}
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="container tab-pane active"><br>
+            <form method="post" enctype="multipart/form-data" action="{% if education_instance %}{% url 'user-create-resume-education' education_instance.id %}{% else %}{% url 'user-create-resume-edu' %}{% endif %}">
+                {% csrf_token %}
+                {{ educa_info_form.management_form }}
+                {% for form in educa_info_form %}
+                    <div class="row mt-2">
+                        <div class="col">
+                            <label class="text-light">{{ form.degree_category.label }}
+                            {% if form.fields.degree_category.required %}
+                                <span class="text-warning">*</span>
+                            {% endif %}
+                            </label>
+                            {{ form.degree_category }}
+                            {% if form.degree_category.errors %}
+                                <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ form.degree_category.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col">
+                            <label class="text-light">{{ form.start_degree.label }}
+                                {% if form.fields.start_degree.required %}
+                                    <span class="text-warning">*</span>
+                                {% endif %}
+                            </label>
+                            {{ form.start_degree }}
+                            {% if form.start_degree.errors %}
+                                <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ form.start_degree.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col">
+                            <label class="text-light">{{ form.end_degree.label }}
+                                {% if form.fields.end_degree.required %}
+                                    <span class="text-warning">*</span>
+                                {% endif %}
+                            </label>
+                            {{ form.end_degree }}
+                            {% if form.end_degree.errors %}
+                                <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ form.end_degree.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col">
+                            <label class="text-light">{{ form.degree_image.label }}
+                                {% if form.fields.degree_image.required %}
+                                    <span class="text-warning">*</span>
+                                {% endif %}
+                            </label>
+                            {{ form.degree_image }}
+                            {% if form.degree_image.errors %}
+                                <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ form.degree_image.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <label class="text-light">{{ form.degree_description.label }}
+                                {% if form.fields.degree_description.required %}
+                                    <span class="text-warning">*</span>
+                                {% endif %}
+                            </label>
+                            {{ form.degree_description }}
+                            {% if form.degree_description.errors %}
+                                <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ form.degree_description.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <label class="text-light">{{ form.DELETE.label }}</label>
+                            {{ form.DELETE }}
+                        </div>
+                    </div>
+                    <hr>
+                {% endfor %}
+                    <div class="row mt-2">
+                        <div class="col">
+                            <button type="submit" style="background-color:#149ddd;" class="btn btn-md text-light float-end">
+                                Save Information
+                            </button>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

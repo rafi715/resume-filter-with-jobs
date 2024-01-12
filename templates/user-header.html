@@ -1,0 +1,58 @@
+{% load static %}
+
+<!-- ======= Header ======= -->
+<header id="header">
+    <div class="d-flex flex-column">
+        <div class="profile">
+            <img src="{% static 'Rimg/profile-img.jpg' %}" alt="" class="img-fluid rounded-circle">
+            <h1><a href="index.html">Name</a></h1>
+        </div>
+
+        <nav id="navbar" class="nav-menu navbar">
+            <ul>
+                <li>
+                    <a href="{% url 'user-panel' %}" class="nav-link scrollto ">
+                        <i class="bx bx-home"></i>
+                        <span>Applied Jobs</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'user-jobs' %}" class="nav-link scrollto">
+                        <i class="bx bx-book-content"></i>
+                        <span>Jobs</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'user-create-resume-personal' %}" class="nav-link scrollto">
+                        <i class="bx bx-pencil"></i>
+                        <span>Create Resume</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'user-resume' %}" class="nav-link ">
+                        <i class="bx bx-file-blank"></i>
+                        <span>Resume</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'user-change-password' %}" class="nav-link scrollto">
+                        <i class="bx bx-key"></i>
+                        <span>Change Password</span>
+                    </a>
+                </li>
+{#                <li>#}
+{#                    <a href="myProfile.html" class="nav-link scrollto active">#}
+{#                        <i class="bx bx-pencil"></i>#}
+{#                        <span>My Profile</span>#}
+{#                    </a>#}
+{#                </li>#}
+                <li>
+                    <a href="{% url 'logout' %}" class="nav-link scrollto">
+                        <i class="bx bx-lock-open"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </nav><!-- .nav-menu -->
+    </div>
+</header><!-- End Header -->

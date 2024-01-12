@@ -1,0 +1,83 @@
+{% extends 'main-master.html' %}
+
+{% load static %}
+
+{% block page-title %} Jobs {% endblock %}
+
+{% block page-styles %} {% endblock %}
+
+{% block hero-section %}{% endblock %}
+
+{% block page-content %}
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio">
+        <div class="container" data-aos="fade-up">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">Jobs</h3>
+                    <div class="section-title-divider"></div>
+                    <p class="section-description">
+                        Si stante, hoc natura videlicet vult, salvam esse se, quod concedimus ses haec dicturum fuisse
+                    </p>
+                </div>
+            </div>
+            <div class="row portfolio-container">
+                {% for job in jobs %}
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <img src="{{ job.ads.url }}" class="img-fluid" alt="" style="width: 100%; height: 300px;">
+                        <div class="portfolio-info">
+                            <h4>{{ job.job_title }}</h4>
+                            <a href="{{ job.ads.url }}" data-gallery="portfolioGallery"
+                               class="portfolio-lightbox preview-link" title="{{ job.job_description }}">
+                                <i class="bi bi-plus"></i>
+                            </a>
+                            <a href="{% url 'job-detail' job_id=job.id %}" class="details-link" title="More Details">
+                                <i class="bi bi-link"></i>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!--End Portfolio Section -->
+    <!-- ======= Contact Section ======= -->
+    <section id="contact">
+        <div class="container" data-aos="fade-up">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">Contact Us</h3>
+                    <div class="section-title-divider"></div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-3 col-md-4">
+                    <div class="info">
+                        <div>
+                            <i class="bi bi-geo-alt"></i>
+                            <p>A108 Adam Street<br>Rawalpindi,islamabad</p>
+                        </div>
+
+                        <div>
+                            <i class="bi bi-envelope"></i>
+                            <p>aqsasyed.bsse@gmail.com</p>
+                        </div>
+
+                        <div>
+                            <i class="bi bi-phone"></i>
+                            <p>+92 5589 55488 55</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-8">
+                    {% include 'main-contactus.html' %}
+                </div>
+            </div>
+        </div>
+    </section><!-- End Contact Section -->
+{% endblock %}
+
+{% block page-scripts %}{% endblock %}

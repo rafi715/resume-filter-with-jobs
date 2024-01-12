@@ -1,0 +1,126 @@
+{% extends 'admin-master.html' %}
+
+{% load static %}
+
+{% block page-title %}Admin - Edit Job {% endblock %}
+
+{% block page-styles %}
+
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+        }
+
+        .ck.ck-editor__main > .ck-editor__editable:not(.ck-focused) {
+            height: 200px !important;
+        }
+
+        .form-control {
+            border-radius: 0 !important;
+        }
+
+
+    </style>
+{% endblock %}
+
+{% block page-content %}
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Edit Job Details
+                    <a href="{% url 'admin-panel' %}" class="float-end btn btn-sm btn-primary">View All Job</a>
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 pt-4 pt-lg-0 content mx-auto" data-aos="fade-left">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>{{ job_form.job_title.label }}</label>
+                                {{ job_form.job_title }}
+                                {% if job_form.job_title.errors %}
+                                    <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ job_form.job_title.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-4">
+                                <label>{{ job_form.ads.label }}</label>
+                                {{ job_form.ads }}
+                                {% if job_form.ads.errors %}
+                                    <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ job_form.ads.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-2">
+                                <img src="{{ job_data.ads.url }}" style="width:100px;height:100px;" alt="" class="img-fluid d-block mx-auto">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col">
+                                <label>{{ job_form.last_date.label }}</label>
+                                {{ job_form.last_date }}
+                                {% if job_form.last_date.errors %}
+                                    <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ job_form.last_date.errors }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col">
+                                <label>{{ job_form.is_active.label }}</label>
+                                {{ job_form.is_active }}
+                                {% if job_form.is_active.errors %}
+                                    <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ job_form.is_active.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col">
+                                <label>{{ job_form.job_description.label }}</label>
+                                {{ job_form.job_description|safe }}
+                                {% if job_form.job_description.errors %}
+                                    <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ job_form.job_description.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col">
+                                <button type="submit" style="background-color:#149ddd;" class="btn btn-md text-light float-end">Save Job
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End About Section -->
+{% endblock %}
+{% block page-scripts %}
+    <script src="{% static 'ckeditor5/ckeditor.js' %}"></script>
+    <script>
+        function initEditor(id) {
+            ClassicEditor.create(document.querySelector(id), {
+                // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+            }).then(editor => {
+                window.editor = editor;
+            }).catch(err => {
+                console.error(err.stack);
+            });
+        }
+
+        initEditor('#id_job_description');
+        $(document).ready(function () {
+            var date_input = $('input[name="last_date"]');
+            var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+            var options = {
+                {#format: 'dd/mm/yyyy',#}
+                container: container,
+                todayHighlight: true,
+                autoclose: true,
+            };
+            date_input.datepicker(options);
+        })
+    </script>
+{% endblock %}

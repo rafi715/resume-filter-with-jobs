@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Admin - Edit Email</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/Rimg/favicon.png" rel="icon">
+  <link href="assets/Rimg/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/Rvendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/Rvendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/Rvendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/Rvendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/Rvendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/Rvendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/Rstyle.css" rel="stylesheet">
+
+  <style type="text/css">
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+     }
+    .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused){
+      height: 200px !important;
+    }
+
+    .form-control{
+      border-radius: 0px !important;
+    }
+    
+    
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ======= Mobile nav toggle button ======= -->
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="d-flex flex-column">
+
+      <div class="profile">
+        <img src="assets/Rimg/profile-img.jpg" alt="" class="img-fluid rounded-circle">
+        <h1 ><a href="index.html">Admin</a></h1>
+        
+      </div>
+
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="jobListing.html" class="nav-link  "><i class="bx bx-home"></i> <span>Dashboard</span></a></li>
+          <li><a href="jobListing.html" class="nav-link"><i class="bx bx-book-content"></i> <span>Jobs</span></a></li>
+          <li><a href="emailListing.html" class="nav-link active"><i class="bx bx-envelope"></i> <span>Email Content</span></a></li>
+
+          
+          <li><a href="#" class="nav-link "><i class="bx bx-envelope"></i> <span>Logout</span></a></li>
+        </ul>
+      </nav><!-- .nav-menu -->
+    </div>
+  </header><!-- End Header -->
+
+  
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Update Email Details
+          </h2>
+          
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-10 pt-4 pt-lg-0 content mx-auto" data-aos="fade-left">
+            <form>
+          <div class="row">
+            
+            <div class="col">
+              <label >Email Subject</label>
+              <input type="text" class="form-control" placeholder="Enter Email Title" name="emailTitle">
+            </div>
+            <div class="col">
+              <label >Status </label>
+              <select class="form-control" name="jobStatus">
+                <option value="">Select Email Status</option>
+                <option value="">Block</option>
+                <option value="">Active</option>
+
+              </select>
+            </div>
+            
+            
+          </div>
+
+         
+
+
+          <div class="row mt-2">
+            
+            
+            
+            <div class="col">
+              <label >Email Description</label>
+              <textarea id="jobDescription" class="form-control" rows="5" placeholder="Write Job Description"></textarea>
+            </div>
+
+            
+          </div>
+          <div class="row mt-2">
+            <div class="col">
+              <button type="submit" style="background-color:#149ddd;" class="btn btn-md text-light float-end">Update Email</button>
+            </div>
+          </div>
+        </form>
+           
+           
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+  
+
+   
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>iPortfolio</span></strong>
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/Rvendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/Rvendor/aos/aos.js"></script>
+  <script src="assets/Rvendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/Rvendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/Rvendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/Rvendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/Rvendor/typed.js/typed.umd.js"></script>
+  <script src="assets/Rvendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/Rvendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <script src="ckeditor5/ckeditor.js"></script>
+
+<script>
+
+
+
+    function initEditor(id){
+      ClassicEditor
+      .create( document.querySelector( id ), {
+        // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+      } )
+      .then( editor => {
+        window.editor = editor;
+      } )
+      .catch( err => {
+        console.error( err.stack );
+      } );
+    }
+
+    initEditor('#jobDescription');
+  </script>
+
+</body>
+
+</html>

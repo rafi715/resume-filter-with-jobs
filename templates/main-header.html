@@ -1,0 +1,20 @@
+{% load static %}
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+        <a href="{% url 'index' %}" class="logo mr-auto"><img src="{% static 'img/logo.jpg' %}" alt=""></a>
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto active" href="{% url 'index' %}">Home</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'jobs' %}">Jobs</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'index' %}#about">About</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'index' %}#services">Services</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'index' %}#testimonials">Testimonials</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'index' %}#team">Team</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'index' %}#contact">Contact</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'register' %}">Signup</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+    </div>
+</header><!-- End Header -->

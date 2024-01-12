@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>{% block page-title %}{% endblock %}</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="{% static 'Rimg/favicon.png' %}" rel="icon">
+    <link href="{% static 'Rimg/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'Rvendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'Rvendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'Rvendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'Rvendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'Rvendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'Rvendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'css/Rstyle.css' %}" rel="stylesheet">
+
+    {% block page-styles %}{% endblock %}
+
+    <style type="text/css">
+        body { font-family: Arial, sans-serif; background-color: #f8f8f8; }
+        .form-control { border-radius: 0 !important; }
+    </style>
+
+</head>
+
+<body>
+    <!-- ======= Mobile nav toggle button ======= -->
+    <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+    {% include 'user-header.html' %}
+
+    {% block page-hero %}{% endblock %}
+
+    <main id="main">
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+        {% block page-content %}{% endblock %}
+    </main><!-- End #main -->
+
+    {% include 'user-footer.html' %}
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'Rvendor/purecounter/purecounter_vanilla.js' %}"></script>
+    <script src="{% static 'Rvendor/aos/aos.js' %}"></script>
+    <script src="{% static 'Rvendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'Rvendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'Rvendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'Rvendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'Rvendor/typed.js/typed.umd.js' %}"></script>
+    <script src="{% static 'Rvendor/waypoints/noframework.waypoints.js' %}"></script>
+    <script src="{% static 'Rvendor/php-email-form/validate.js' %}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block page-scripts %}{% endblock %}
+</body>
+
+</html>

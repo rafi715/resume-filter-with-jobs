@@ -1,0 +1,208 @@
+{% extends 'user-create-resume.html' %}
+
+{% block page-content-tab %}
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="container tab-pane active"><br>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col">
+                        <label class="text-light">{{ user_info_form.user_full_name.label }}
+                        {% if user_info_form.fields.user_full_name.required %}
+                            <span class="text-warning">*</span>
+                        {% endif %}
+                        </label>
+                        {{ user_info_form.user_full_name }}
+                        {% if user_info_form.user_full_name.errors %}
+                            <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ user_info_form.user_full_name.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                        <label class="text-light">{{ user_info_form.user_email.label }}
+                            {% if user_info_form.fields.user_email.required %}
+                                <span class="text-warning">*</span>
+                            {% endif %}
+                        </label>
+                        {{ user_info_form.user_email }}
+                        {% if user_info_form.user_email.errors %}
+                            <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ user_info_form.user_email.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                        <label class="text-light">{{ user_info_form.user_dob.label }}
+                            {% if user_info_form.fields.user_dob.required %}
+                                <span class="text-warning">*</span>
+                            {% endif %}
+                        </label>
+                        {{ user_info_form.user_dob }}
+                        {% if user_info_form.user_dob.errors %}
+                            <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ user_info_form.user_dob.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col">
+                        <label class="text-light">{{ user_info_form.user_contact_no.label }}
+                            {% if user_info_form.fields.user_contact_no.required %}
+                                <span class="text-warning">*</span>
+                            {% endif %}
+                        </label>
+                        {{ user_info_form.user_contact_no }}
+                        {% if user_info_form.user_contact_no.errors %}
+                            <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ user_info_form.user_contact_no.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                        <label class="text-light">{{ user_info_form.user_degree.label }}
+                            {% if user_info_form.fields.user_degree.required %}
+                                <span class="text-warning">*</span>
+                            {% endif %}
+                        </label>
+                        {{ user_info_form.user_degree }}
+                        {% if user_info_form.user_degree.errors %}
+                            <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ user_info_form.user_degree.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                        <label class="text-light">{{ user_info_form.user_portfolio.label }}
+                            {% if user_info_form.fields.user_portfolio.required %}
+                                <span class="text-warning">*</span>
+                            {% endif %}
+                        </label>
+                        {{ user_info_form.user_portfolio }}
+                        {% if user_info_form.user_portfolio.errors %}
+                            <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ user_info_form.user_portfolio.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col">
+                        <label class="text-light">{{ user_info_form.user_tag_line.label }}
+                            {% if user_info_form.fields.user_tag_line.required %}
+                                <span class="text-warning">*</span>
+                            {% endif %}
+                        </label>
+                        {{ user_info_form.user_tag_line }}
+                        {% if user_info_form.user_tag_line.errors %}
+                            <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ user_info_form.user_tag_line.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                        <label class="text-light">{{ user_info_form.user_experience.label }}
+                            {% if user_info_form.fields.user_experience.required %}
+                                <span class="text-warning">*</span>
+                            {% endif %}
+                        </label>
+                        {{ user_info_form.user_experience }}
+                        {% if user_info_form.user_experience.errors %}
+                            <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ user_info_form.user_experience.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                        <label class="text-light">{{ user_info_form.user_image.label }}
+                            {% if user_info_form.fields.user_image.required %}
+                                <span class="text-warning">*</span>
+                            {% endif %}
+                        </label>
+                        {{ user_info_form.user_image }}
+                        {% if user_info_form.user_image.errors %}
+                            <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ user_info_form.user_image.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col">
+                        <label class="text-light">{{ user_info_form.user_facebook.label }}
+                            {% if user_info_form.fields.user_facebook.required %}
+                                <span class="text-warning">*</span>
+                            {% endif %}
+                        </label>
+                        {{ user_info_form.user_facebook }}
+                        {% if user_info_form.user_facebook.errors %}
+                            <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ user_info_form.user_facebook.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                        <label class="text-light">{{ user_info_form.user_linkedin.label }}
+                            {% if user_info_form.fields.user_linkedin.required %}
+                                <span class="text-warning">*</span>
+                            {% endif %}
+                        </label>
+                        {{ user_info_form.user_linkedin }}
+                        {% if user_info_form.user_linkedin.errors %}
+                            <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ user_info_form.user_linkedin.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                        <label class="text-light">{{ user_info_form.user_skype.label }}
+                            {% if user_info_form.fields.user_skype.required %}
+                                <span class="text-warning">*</span>
+                            {% endif %}
+                        </label>
+                        {{ user_info_form.user_skype }}
+                        {% if user_info_form.user_skype.errors %}
+                            <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ user_info_form.user_skype.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col">
+                        <label class="text-light">{{ user_info_form.user_twitter.label }}
+                            {% if user_info_form.fields.user_twitter.required %}
+                                <span class="text-warning">*</span>
+                            {% endif %}
+                        </label>
+                        {{ user_info_form.user_twitter }}
+                        {% if user_info_form.user_twitter.errors %}
+                            <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ user_info_form.user_twitter.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                        <label class="text-light">{{ user_info_form.user_instagram.label }}
+                            {% if user_info_form.fields.user_instagram.required %}
+                                <span class="text-warning">*</span>
+                            {% endif %}
+                        </label>
+                        {{ user_info_form.user_instagram }}
+                        {% if user_info_form.user_instagram.errors %}
+                            <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ user_info_form.user_instagram.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                        <label class="text-light">{{ user_info_form.user_address.label }}
+                            {% if user_info_form.fields.user_address.required %}
+                                <span class="text-warning">*</span>
+                            {% endif %}
+                        </label>
+                        {{ user_info_form.user_address }}
+                        {% if user_info_form.user_address.errors %}
+                            <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ user_info_form.user_address.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col">
+                        <label class="text-light">{{ user_info_form.about_description.label }}
+                            {% if user_info_form.fields.about_description.required %}
+                                <span class="text-warning">*</span>
+                            {% endif %}
+                        </label>
+                        {{ user_info_form.about_description }}
+                        {% if user_info_form.about_description.errors %}
+                            <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ user_info_form.about_description.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <button type="submit" style="background-color:#149ddd;" class="btn btn-md text-light float-end">
+                                Save Information
+                            </button>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
