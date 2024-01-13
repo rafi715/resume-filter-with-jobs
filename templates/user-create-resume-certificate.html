@@ -1,0 +1,66 @@
+{% extends 'user-create-resume.html' %}
+
+{% block page-content-tab %}
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="container tab-pane active"><br>
+            <form method="post" enctype="multipart/form-data" action="{% if certificate_instance %}{% url 'user-create-resume-certificate' certificate_instance.id %}{% else %}{% url 'user-create-resume-certi' %}{% endif %}">
+                {% csrf_token %}
+                {{ certi_info_form.management_form }}
+                {% for form in certi_info_form %}
+                    <div class="row mt-2">
+                        <div class="col">
+                            <label class="text-light">{{ form.cert_title.label }}
+                            {% if form.fields.cert_title.required %}
+                                <span class="text-warning">*</span>
+                            {% endif %}
+                            </label>
+                            {{ form.cert_title }}
+                            {% if form.cert_title.errors %}
+                                <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ form.cert_title.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col">
+                            <label class="text-light">{{ form.cert_image.label }}
+                                {% if form.fields.cert_image.required %}
+                                    <span class="text-warning">*</span>
+                                {% endif %}
+                            </label>
+                            {{ form.cert_image }}
+                            {% if form.cert_image.errors %}
+                                <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ form.cert_image.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <label class="text-light">{{ form.cert_description.label }}
+                                {% if form.fields.cert_description.required %}
+                                    <span class="text-warning">*</span>
+                                {% endif %}
+                            </label>
+                            {{ form.cert_description }}
+                            {% if form.cert_description.errors %}
+                                <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ form.cert_description.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <label class="text-light">{{ form.DELETE.label }}</label>
+                            {{ form.DELETE }}
+                        </div>
+                    </div>
+                    <hr>
+                {% endfor %}
+                    <div class="row mt-2">
+                        <div class="col">
+                            <button type="submit" style="background-color:#149ddd;" class="btn btn-md text-light float-end">
+                                Save Information
+                            </button>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

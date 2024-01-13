@@ -1,0 +1,53 @@
+{% extends 'user-create-resume.html' %}
+
+{% block page-content-tab %}
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="container tab-pane active"><br>
+            <form method="post" action="{% if skill_instance %}{% url 'user-create-resume-skill' skill_instance.id %}{% else %}{% url 'user-create-resume-ski' %}{% endif %}">
+                {% csrf_token %}
+                {{ skill_info_form.management_form }}
+                {% for form in skill_info_form %}
+                    <div class="row mt-2">
+                        <div class="col">
+                            <label class="text-light">{{ form.skill_type.label }}
+                            {% if form.fields.skill_type.required %}
+                                <span class="text-warning">*</span>
+                            {% endif %}
+                            </label>
+                            {{ form.skill_type }}
+                            {% if form.skill_type.errors %}
+                                <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ form.skill_type.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col">
+                            <label class="text-light">{{ form.skill_value.label }}
+                                {% if form.fields.skill_value.required %}
+                                    <span class="text-warning">*</span>
+                                {% endif %}
+                            </label>
+                            {{ form.skill_value }}
+                            {% if form.skill_value.errors %}
+                                <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ form.skill_value.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <label class="text-light">{{ form.DELETE.label }}</label>
+                            {{ form.DELETE }}
+                        </div>
+                    </div>
+                    <hr>
+                {% endfor %}
+                    <div class="row mt-2">
+                        <div class="col">
+                            <button type="submit" style="background-color:#149ddd;" class="btn btn-md text-light float-end">
+                                Save Information
+                            </button>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

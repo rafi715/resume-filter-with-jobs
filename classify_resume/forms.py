@@ -7,7 +7,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.core.exceptions import ValidationError
 
 from classify_resume.models import User, Jobs, AppliedJob, EmailContent, ResumePersonalInfo, ResumeEducationInfo, \
-    ProfessionalExperienceInfo
+    ProfessionalExperienceInfo, SkillInfo, CertificateInfo
 
 
 def validate_file_extension(value):
@@ -341,5 +341,59 @@ class ApplicantProfessionalInfoForm(forms.ModelForm):
                 attrs={'class': 'datepicker form-control', 'placeholder': 'YYYY-MM-DD'}
             ),
         }
+
+
+class ApplicantCertificateInfoForm(forms.ModelForm):
+    cert_title = forms.CharField(
+        max_length=50,
+        widget=forms.TextInput(attrs={'placeholder': 'Certificate Title', 'class': 'form-control'})
+    )
+    cert_image = forms.FileField(
+        widget=forms.FileInput(attrs={'class': 'form-control'}),
+        required=False, validators=[validate_file_extension]
+    )
+    cert_description = forms.CharField(
+        min_length=25, max_length=1000, required=False,
+        widget=forms.Textarea(
+            attrs={
+                'rows': '8',
+                'class': 'form-control ckeditor-instance',
+                'placeholder': 'Write Certificate Description'
+            }
+        )
+    )
+
+    class Meta:
+        model = CertificateInfo
+        fields = ('cert_title', 'cert_image', 'cert_description')
+
+
+class ApplicantSkillInfoForm(forms.ModelForm):
+    SKILLS_CHOICES = [
+        ('', 'Select Percentage'),
+        ('10', '10 %'),
+        ('20', '20 %'),
+        ('30', '30 %'),
+        ('40', '40 %'),
+        ('50', '50 %'),
+        ('60', '60 %'),
+        ('70', '70 %'),
+        ('80', '80 %'),
+        ('90', '90 %'),
+        ('100', '100 %'),
+    ]
+    skill_type = forms.CharField(
+        max_length=50,
+        widget=forms.TextInput(attrs={'placeholder': 'Skill Name', 'class': 'form-control'})
+    )
+    skill_value = forms.ChoiceField(
+        choices=SKILLS_CHOICES,
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
+
+    class Meta:
+        model = SkillInfo
+        fields = ('skill_type', 'skill_value')
+
 
 

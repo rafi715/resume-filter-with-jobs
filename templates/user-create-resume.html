@@ -69,10 +69,12 @@
                    href="{% url 'user-create-resume-pro' %}">Professional Experience</a>
             </li>
             <li class="nav-item p-1">
-                <a class="nav-link {% if is_exist_skills %}change-complete{% endif %}" data-bs-toggle="tab" href="#skills">Skills</a>
+                <a class="nav-link {% if is_exist_skills %}change-complete{% endif %}"
+                   href="{% url 'user-create-resume-ski' %}">Skills</a>
             </li>
             <li class="nav-item p-1">
-                <a class="nav-link {% if is_exist_certi %}change-complete{% endif %}" data-bs-toggle="tab" href="#certificates">Certificate</a>
+                <a class="nav-link {% if is_exist_certi %}change-complete{% endif %}"
+                   href="{% url 'user-create-resume-certi' %}">Certificate</a>
             </li>
         </ul>
         {% block page-content-tab %} {% endblock %}

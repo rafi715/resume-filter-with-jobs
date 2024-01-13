@@ -37,6 +37,18 @@ urlpatterns = [
         name='user-create-resume-professional'
     ),
     path('user-create-resume-professional/', views.user_create_resume_professional, name='user-create-resume-pro'),
+    path(
+        'user-create-resume-certificate/<int:certificate_id>/',
+        views.user_create_resume_certificate,
+        name='user-create-resume-certificate'
+    ),
+    path('user-create-resume-certificate/', views.user_create_resume_certificate, name='user-create-resume-certi'),
+    path(
+        'user-create-resume-skill/<int:skill_id>/',
+        views.user_create_resume_skill,
+        name='user-create-resume-skill'
+    ),
+    path('user-create-resume-skill/', views.user_create_resume_skill, name='user-create-resume-ski'),
     # path('user-create-resume/', views.user_create_resume, name='user-create-resume'),
     # path('user-create-resume/', views.user_create_resume, name='user-create-resume'),
     # path('user-create-resume/', views.user_create_resume, name='user-create-resume'),
