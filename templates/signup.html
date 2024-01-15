@@ -51,23 +51,23 @@
 </head>
 
 <body>
-{% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
     <div class="main">
+        {% if messages %}
+            <ul class="messages pt-lg-3">
+                {% for message in messages %}
+                    <li class="text-white" style="text-decoration: none;">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
         <input type="checkbox" id="chk" aria-hidden="true">
         <div class="signup">
-            <form method="post">
+            <form method="post" novalidate  >
                 {% csrf_token %}
                 <label for="chk" aria-hidden="true">Sign up</label>
                 {% for field in sign_form %}
                     {{ field }}
                     {% if field.errors %}
-                        <div class="col-md-11 alert-danger m-2" style="font-max-size: small; color: red;">{{ field.errors }}</div>
+                        <div class="col-md-11 alert-danger m-2" style="font-size: small; color: red;">{{ field.errors }}</div>
                     {% endif %}
                 {% endfor %}
                 <button id="signupBtn" type="submit" name="register_user">Signup</button>
@@ -75,7 +75,7 @@
         </div>
 
         <div class="login" id="login-container">
-            <form method="post">
+            <form method="post" novalidate>
                 {% csrf_token %}
                 <label for="chk" aria-hidden="true">Login</label>
                 {% for field in login_form %}

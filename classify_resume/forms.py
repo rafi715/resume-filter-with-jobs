@@ -264,7 +264,7 @@ class ApplicantPersonalInfoForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'placeholder': 'Portfolio Detail', 'class': 'form-control'})
     )
     about_description = forms.CharField(
-        min_length=25, max_length=1000, required=False,
+        max_length=1000, required=False,
         widget=forms.Textarea(attrs={'rows': '8', 'class': 'form-control', 'placeholder': 'Write Job Description'})
     )
 

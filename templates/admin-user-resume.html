@@ -68,8 +68,6 @@
         </div>
     </section><!-- End About Section -->
 
-
-
     <!-- ======= Skills Section ======= -->
     <section id="skills" class="skills section-bg">
         <div class="container">
@@ -97,24 +95,56 @@
         </div>
     </section><!-- End Skills Section -->
 
+    <!-- ======= Certificate Section ======= -->
+    <section id="certifi" class="skills section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Certificates</h2>
+                <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
+            </div>
+            <div class="row skills-content">
+                {% for certi in user_info.user_cert_info.all %}
+                    <div class="col-lg-6" data-aos="fade-up">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="resume-item">
+                                    <h4>{{ certi.cert_title }}</h4>
+                                    <p>{{ certi.cert_description|safe }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <img src="{{ certi.cert_image.url }}" style="width:150px;height:150px;" class="img-fluid d-block mx-auto">
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section><!-- End Certificate Section -->
+
     <!-- ======= Resume Section ======= -->
     <section id="resume" class="resume">
         <div class="container">
 
             <div class="section-title">
                 <h2>Professional & Educational Details</h2>
-                <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
             </div>
 
             <div class="row">
                 <div class="col-lg-6" data-aos="fade-up">
                     <h3 class="resume-title">Education</h3>
                     {% for edu in user_info.user_education_info.all %}
-                        <div class="resume-item">
-                            <h4>{{ edu.degree_category }}</h4>
-                            <h5>{{ edu.start_degree|date:"Y" }} - {{ edu.end_degree|date:"Y" }}</h5>
-{#                            <p><em>Rochester Institute of Technology, Rochester, NY</em></p>#}
-                            <p>{{ edu.degree_description|safe }}</p>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="resume-item">
+                                    <h4>{{ edu.degree_category }}</h4>
+                                    <h5>{{ edu.start_degree|date:"Y" }} - {{ edu.end_degree|date:"Y" }}</h5>
+                                    <p>{{ edu.degree_description|safe }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <img src="{{ edu.degree_image.url }}" style="height:115px;" class="img-fluid d-block mx-auto">
+                            </div>
                         </div>
                     {% endfor %}
                 </div>
