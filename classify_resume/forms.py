@@ -89,11 +89,12 @@ class CustomPasswordChangeForm(forms.Form):
         return old_password
 
     def clean_new_password(self):
-        new_password1 = self.cleaned_data.get('new_password')
-        new_password2 = self.cleaned_data.get('confirm_password')
+        new_password1 = self.data.get('new_password')
+        new_password2 = self.data.get('confirm_password')
+        print(new_password2, new_password1)
         if new_password1 != new_password2:
             raise forms.ValidationError("The two password fields didn't match.")
-        return new_password2
+        return new_password1
 
 
 class LoginForm(forms.Form):
@@ -117,6 +118,7 @@ class JobForm(forms.ModelForm):
         required=False, validators=[validate_file_extension]
     )
     total_position = forms.IntegerField(
+        min_value=0,
         widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Total Number of Positions'})
     )
     job_description = forms.CharField(
@@ -196,9 +198,11 @@ class EmailEditForm(forms.ModelForm):
 
 class AppliedJobForm(forms.ModelForm):
     current_salary = forms.IntegerField(
+        min_value=0,
         widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Current Salary'})
     )
     expected_salary = forms.IntegerField(
+        min_value=0,
         widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Expected Salary'})
     )
 
@@ -233,6 +237,7 @@ class ApplicantPersonalInfoForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'placeholder': 'Tagline Detail', 'class': 'form-control'})
     )
     user_experience = forms.IntegerField(
+        min_value=0,
         widget=forms.TextInput(attrs={'placeholder': 'Years of Experience', 'class': 'form-control'})
     )
     user_image = forms.FileField(
@@ -301,7 +306,7 @@ class ApplicantEducationInfoForm(forms.ModelForm):
 
     class Meta:
         model = ResumeEducationInfo
-        fields = ('degree_category', 'start_degree', 'end_degree', 'degree_image', 'degree_description')
+        fields = ('id', 'degree_category', 'start_degree', 'end_degree', 'degree_image', 'degree_description')
         widgets = {
             'input_formats': settings.DATE_INPUT_FORMATS,
             'start_degree': forms.DateInput(attrs={'class': 'datepicker form-control', 'placeholder': 'YYYY-MM-DD'}),
@@ -331,7 +336,7 @@ class ApplicantProfessionalInfoForm(forms.ModelForm):
 
     class Meta:
         model = ProfessionalExperienceInfo
-        fields = ('company_name', 'job_title', 'start_experience', 'end_experience', 'official_description')
+        fields = ('id', 'company_name', 'job_title', 'start_experience', 'end_experience', 'official_description')
         widgets = {
             'input_formats': settings.DATE_INPUT_FORMATS,
             'start_experience': forms.DateInput(
@@ -365,7 +370,7 @@ class ApplicantCertificateInfoForm(forms.ModelForm):
 
     class Meta:
         model = CertificateInfo
-        fields = ('cert_title', 'cert_image', 'cert_description')
+        fields = ('id', 'cert_title', 'cert_image', 'cert_description')
 
 
 class ApplicantSkillInfoForm(forms.ModelForm):
@@ -393,7 +398,7 @@ class ApplicantSkillInfoForm(forms.ModelForm):
 
     class Meta:
         model = SkillInfo
-        fields = ('skill_type', 'skill_value')
+        fields = ('id', 'skill_type', 'skill_value')
 
 
 

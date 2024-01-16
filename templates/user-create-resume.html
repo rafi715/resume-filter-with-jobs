@@ -97,7 +97,6 @@
             date_input.datepicker(options);
             date_input_1.datepicker(options);
 
-
             function initEditor(id) {
                 document.querySelectorAll(id).forEach(element => {
                     ClassicEditor.create(element, {}).then(editor => {
@@ -116,227 +115,27 @@
     </script>
     <script>
         function addDegree() {
-            var textareaNo = parseInt(document.getElementById('textareaNo').value);
-            var formContainer = document.getElementById('formContainer');
-            var newRow = document.createElement('div');
-            newRow.className = 'row';
-            newRow.innerHTML = `
-                <hr style="color:white; margin-top:30px;">
-                <div class="col">
-                    <label class="text-light">Degree</label>
-                    <input type="text" class="form-control" placeholder="Enter Degree Title" id="degreeTitle_${textareaNo}" name="degreeTitle_${textareaNo}">
-                </div>
-                <div class="col">
-                    <label class="text-light">Start Date</label>
-                    <input type="date" class="form-control" placeholder="Degree Start Date" id="degreeStart_${textareaNo}" name="degreeStart_${textareaNo}">
-                </div>
-                <div class="col">
-                    <label class="text-light">End Date</label>
-                    <input type="date" class="form-control" placeholder="Degree End Date" id="degreeEnd_${textareaNo}" name="degreeEnd_${textareaNo}">
-                </div>
-                <div class="col">
-                    <label class="text-light">Degree Certificate</label>
-                    <input type="file" class="form-control file-input" placeholder="Degree Certificate" id="degreeCertificate_${textareaNo}" name="degreeCertificate_${textareaNo}">
-                </div>
-            `;
-            formContainer.appendChild(newRow);
-            var descriptionRow = document.createElement('div');
-            descriptionRow.className = 'row mt-2';
-            descriptionRow.innerHTML = `
-                <div class="col">
-                    <label class="text-light">Description</label>
-                    <div class="form-control ckeditor-instance" id="degreeDescription_${textareaNo}"</div>
-                </div>
-            `;
-            formContainer.appendChild(descriptionRow);
-            initEditor('#degreeDescription_'+textareaNo);
-            textareaNo += 1;
-            document.getElementById('textareaNo').value = textareaNo;
+            var form_idx_deg = $('#id_education-TOTAL_FORMS').val();
+            $('#id_education-TOTAL_FORMS').val(parseInt(form_idx_deg) + 1);
+            $('#formContainerEducation').append($('#empty_form_education').html().replace(/__prefix__/g, form_idx_deg));
         }
 
         function addCertificate() {
-            var textareaNo = parseInt(document.getElementById('textareaNo').value);
-            var formContainer = document.getElementById('formContainer');
-            var newRow = document.createElement('div');
-            newRow.className = 'row';
-            newRow.innerHTML = `
-                <hr style="color:white; margin-top:30px;">
-                <div class="col">
-                    <label class="text-light">Certificate</label>
-                    <input type="text" class="form-control" placeholder="Enter Certificate Title" id="certiTitle_${textareaNo}" name="certiTitle_${textareaNo}">
-                </div>
-                <div class="col">
-                    <label class="text-light">Degree Certificate</label>
-                    <input type="file" class="form-control file-input" placeholder="Certificate" id="getCertificate_${textareaNo}" name="getCertificate_${textareaNo}">
-                </div>
-            `;
-            formContainer.appendChild(newRow);
-            var descriptionRow = document.createElement('div');
-            descriptionRow.className = 'row mt-2';
-            descriptionRow.innerHTML = `
-                <div class="col">
-                    <label class="text-light">Description</label>
-                    <div class="form-control ckeditor-instance" id="certificateDescription_${textareaNo}"</div>
-                </div>
-            `;
-            formContainer.appendChild(descriptionRow);
-            initEditor('#certificateDescription_'+textareaNo);
-            textareaNo += 1;
-            document.getElementById('textareaNo').value = textareaNo;
+             var form_idx_certi = $('#id_certifi-TOTAL_FORMS').val();
+            $('#id_certifi-TOTAL_FORMS').val(parseInt(form_idx_certi) + 1);
+            $('#formContainerCerti').append($('#empty_form_certi').html().replace(/__prefix__/g, form_idx_certi));
         }
 
-
+        function addSkills() {
+            var form_idx_skill = $('#id_skil-TOTAL_FORMS').val();
+            $('#id_skil-TOTAL_FORMS').val(parseInt(form_idx_skill) + 1);
+            $('#formContainerSkill').append($('#empty_form_skill').html().replace(/__prefix__/g, form_idx_skill));
+        }
 
         function addJobExperince() {
-            var exp_textareaNo = parseInt(document.getElementById('exp_textareaNo').value);
-            var professionalExperienceContainer = document.getElementById('professionalExperienceContainer');
-            var newRow = document.createElement('div');
-            newRow.className = 'row';
-            newRow.innerHTML = `
-                <hr style="color:white; margin-top:30px;">
-                <div class="col">
-                    <label class="text-light">Company</label>
-                    <input type="text" class="form-control" placeholder="Enter Company Name" name="companyTitle_${exp_textareaNo}" id="companyTitle_${exp_textareaNo}">
-                </div>
-                <div class="col">
-                    <label class="text-light">Title</label>
-                    <input type="text" class="form-control" placeholder="Enter Job Title" name="jobTitle_${exp_textareaNo}" id="jobTitle_${exp_textareaNo}">
-                </div>
-                <div class="col">
-                    <label class="text-light">Start Date</label>
-                    <input type="date" class="form-control" placeholder="Job Start Date" name="jobStart_${exp_textareaNo}" id="jobStart_${exp_textareaNo}">
-                </div>
-                <div class="col">
-                    <label class="text-light">End Date</label>
-                    <input type="date" class="form-control" placeholder ="Job End Date" name="jobEnd_${exp_textareaNo}" id="jobEnd_${exp_textareaNo}">
-              </div>
-            `;
-            professionalExperienceContainer.appendChild(newRow);
-            var descriptionRow = document.createElement('div');
-            descriptionRow.className = 'row mt-2';
-            descriptionRow.innerHTML = `
-                <div class="col">
-                    <label class="text-light">Description</label>
-                    <div class="form-control ckeditor-instance-job" id="jobDescription_${exp_textareaNo}"></div>
-                </div>
-            `;
-            professionalExperienceContainer.appendChild(descriptionRow);
-            initEditor('#jobDescription_' + exp_textareaNo);
-            exp_textareaNo += 1;
-            document.getElementById('exp_textareaNo').value = exp_textareaNo;
+           var form_idx_pro = $('#id_profession-TOTAL_FORMS').val();
+            $('#id_profession-TOTAL_FORMS').val(parseInt(form_idx_pro) + 1);
+            $('#formContainerPro').append($('#empty_form_pro').html().replace(/__prefix__/g, form_idx_pro));
         }
-
-        function saveInformation() {
-            const form = $("#education_info_form")[0];
-            const formData = new FormData(form);
-            const editorInstances = document.querySelectorAll('.ckeditor-instance');
-            editorInstances.forEach((editor, index) => {
-                const editorData = window.editor.getData();
-                formData.append(`degree_description_${index}`, editorData);
-            });
-            const fileInputs = document.querySelectorAll('.file-input');
-            fileInputs.forEach((fileInput, index) => {
-                const files = fileInput.files;
-                for (let i = 0; i < files.length; i++) {
-                    formData.append(`file_${index}_${i}`, files[i]);
-                }
-            });
-            $.ajax({
-                url: "/user-insert-education-detail/",
-                type: "POST",
-                dataType: 'json',
-                processData: false,
-                contentType: false,
-                data: formData,
-                success: function (msg) { },
-                error: function (xhr, status, error) { }
-            });
-        }
-
-        function saveJobInformation() {
-            const form = $("#professional_info_form")[0];
-            const formData = new FormData(form);
-            const editorInstances = document.querySelectorAll('.ckeditor-instance-job');
-            editorInstances.forEach((editor, index) => {
-                const editorData = window.editor.getData();
-                formData.append(`job_description_${index}`, editorData);
-            });
-            $.ajax({
-                url: "/user-insert-work-detail/",
-                type: "POST",
-                dataType: 'json',
-                processData: false,
-                contentType: false,
-                data: formData,
-                success: function (msg) { },
-                error: function (xhr, status, error) { }
-            });
-        }
-
-        function saveSkillInformation() {
-            const form = $("#skill_info_form")[0];
-            const formData = new FormData(form);
-            $.ajax({
-                url: "/user-insert-skill-detail/",
-                type: "POST",
-                dataType: 'json',
-                processData: false,
-                contentType: false,
-                data: formData,
-                success: function (msg) { },
-                error: function (xhr, status, error) { }
-            });
-        }
-
-        $(document).ready(function () {
-            $('#save_user_info').click(function (event) {
-                event.preventDefault();
-                var editor = window.editor;
-                var editorContent = editor.getData();
-                var formData = new FormData($("#personal_info_form")[0]);
-                formData.append("about_user", editorContent);
-                console.log(formData);
-                var error_free = true;
-                for (var input in formData) {
-                    var element1 = $(formData[input]['name']);
-                    var element = input[0];
-                    var eleValue = input[1];
-                    var fullElement = $("input[name=" + element + "]")
-                    if (eleValue !== '') {
-                        fullElement.removeClass("invalid").addClass("valid");
-                    } else {
-                        fullElement.removeClass("valid").addClass("invalid");
-                    }
-                    var valid = fullElement.hasClass("valid");
-                    var error_element = $("span", element1.parent());
-                    if (!valid) {
-                        error_element.removeClass("error").addClass("error_show");
-                        error_free = true;
-                    } else {
-                        error_element.removeClass("error_show").addClass("error");
-                    }
-                    console.log(error_free)
-                }
-                if (!error_free) {
-                    event.preventDefault();
-                } else {
-                    var input_img = $('#profileImage')[0]; // Assuming you have an input element for the image
-                    var file = input_img.files[0];
-                    if (file) {
-                        formData.append("profileImage", file);
-                    }
-                    $.ajax({
-                        url: "/user-create-resume-personal/",
-                        type: "POST",
-                        dataType: 'json',
-                        processData: false,
-                        contentType: false,
-                        data: formData,
-                        success: function (msg) { },
-                        error: function (xhr, status, error) { }
-                    })
-                }
-            })
-        })
     </script>
 {% endblock %}

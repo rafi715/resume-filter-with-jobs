@@ -29,7 +29,11 @@
                     <div class="row mb-3">
                         <div class="col-md-8"><b>Last Date: </b> {{ current_job.last_date }}</div>
                         <div class="col-md-4">
-                            <a href="javaScript:" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-sm btn-success">Apply Now</a>
+                            {% if already_applied %}
+                                <a class="btn btn-sm btn-warning">Already Applied</a>
+                            {% else %}
+                                <a href="javaScript:" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-sm btn-success">Apply Now</a>
+                            {% endif %}
                         </div>
                     </div>
                     <p class="about-text">
@@ -50,12 +54,15 @@
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form method="post">
+                    <form method="post" novalidate>
                         {% csrf_token %}
                         <div class="row">
                             {% for field in apply_form %}
                             <div class="col">
                                 {{ field }}
+                                {% if field.errors %}
+                                    <div class="col-md-11 alert-danger m-2" style="font-size: small; color: red;">{{ field.errors }}</div>
+                                {% endif %}
                             </div>
                             {% endfor %}
                         </div>
