@@ -97,6 +97,38 @@ class CustomPasswordChangeForm(forms.Form):
         return new_password1
 
 
+class CustomForgetPasswordForm(forms.Form):
+    email = forms.EmailField(
+        min_length=6, max_length=40,
+        widget=forms.TextInput(attrs={'placeholder': 'Email Address'})
+    )
+    password = forms.CharField(
+        min_length=6, max_length=20,
+        widget=forms.PasswordInput(render_value=False, attrs={'placeholder': 'Password'})
+    )
+    confirm_password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': 'Repeat Password'})
+    )
+
+    # def __init__(self, *args, **kwargs):
+    #     usr = kwargs.pop('usr', None)
+    #     super().__init__(*args, **kwargs)
+    #     self.user = usr
+
+    def clean_email(self):
+        email = self.data['email']
+        if not User.objects.filter(email=email).exists():
+            raise forms.ValidationError("This email not exists in our record")
+        return email
+
+    def clean_password(self):
+        password = self.data['password']
+        confirm_password = self.data['confirm_password']
+        if password != confirm_password:
+            raise forms.ValidationError("password does not matched")
+        return password
+
+
 class LoginForm(forms.Form):
     email = forms.EmailField(
         min_length=6, max_length=40,

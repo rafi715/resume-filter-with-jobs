@@ -19,7 +19,7 @@ from django.urls import reverse_lazy
 
 from classify_resume.forms import BasicRegForm, LoginForm, JobForm, EmailForm, AppliedJobForm, JobEditForm, \
     CustomPasswordChangeForm, EmailEditForm, ApplicantPersonalInfoForm, ApplicantEducationInfoForm, \
-    ApplicantProfessionalInfoForm, ApplicantCertificateInfoForm, ApplicantSkillInfoForm
+    ApplicantProfessionalInfoForm, ApplicantCertificateInfoForm, ApplicantSkillInfoForm, CustomForgetPasswordForm
 from classify_resume.models import Jobs, ResumePersonalInfo, ResumeEducationInfo, ProfessionalExperienceInfo, SkillInfo, \
     AppliedJob, User, CertificateInfo, EmailContent
 
@@ -117,6 +117,23 @@ def register(request):
     context['sign_form'] = signup_form
     context['login_form'] = login_form
     return render(request, "signup.html", context)
+
+
+def custom_forget_password(request):
+    context = {}
+    forget_form = CustomForgetPasswordForm()
+    if request.method == 'POST':
+        forget_form = CustomForgetPasswordForm(request.POST)
+        if forget_form.is_valid():
+            user_email = forget_form.cleaned_data.get('email')
+            filter_user = User.objects.get(email=user_email)
+            passwd = forget_form.cleaned_data.get('password')
+            filter_user.set_password(passwd)
+            filter_user.save()
+            return redirect('register')
+
+    context['forget_form'] = forget_form
+    return render(request, "forget-password.html", context)
 
 
 def job_detail(request, job_id):
@@ -392,6 +409,7 @@ def user_create_resume_personal(request):
         ui_form = user_info_form.save(commit=False)
         ui_form.user = user1
         ui_form.save()
+        return redirect('user-create-resume-edu')
 
     context['is_exist_personal'] = personal_record_exist
     context['is_exist_educational'] = ResumeEducationInfo.objects.filter(user_info__user_id=request.user).exists()
@@ -557,57 +575,6 @@ def user_create_resume_skill(request, skill_id=None):
     context['skill_info_form'] = formset_skill
     context['user_info'] = ResumePersonalInfo.objects.filter(user_id=request.user.id).first()
     return render(request, "user-create-resume-skill.html", context)
-
-
-# @login_required(login_url='register')
-# def user_create_resume_professional(request, profession_id=None):
-#     context = {}
-#     professional_instance = get_object_or_404(ProfessionalExperienceInfo, pk=profession_id) if profession_id else None
-#     resume_professional_exist = ProfessionalExperienceInfo.objects.filter(user_info__user_id=request.user).exists()
-#     if professional_instance:
-#         professional_formset = modelformset_factory(
-#             ProfessionalExperienceInfo,
-#             form=ApplicantProfessionalInfoForm,
-#             extra=0,
-#             can_delete=True
-#         )
-#     else:
-#         professional_formset = modelformset_factory(
-#             ProfessionalExperienceInfo,
-#             form=ApplicantProfessionalInfoForm,
-#             extra=1,
-#             can_delete=True
-#         )
-#     if request.method == 'POST':
-#         formset_pro = professional_formset(
-#             request.POST,
-#             queryset=ProfessionalExperienceInfo.objects.filter(user_info__user_id=request.user),
-#             prefix='profession'
-#         )
-#         if formset_pro.is_valid():
-#             for form in formset_pro:
-#                 if form.cleaned_data.get('DELETE'):
-#                     if form.instance.pk:
-#                         form.instance.delete()
-#                 else:
-#                     form.instance.user_info = ResumePersonalInfo.objects.filter(user=request.user).first()
-#                     form.save()
-#             return redirect('user-create-resume-pro')
-#     else:
-#         formset_pro = professional_formset(
-#             queryset=ProfessionalExperienceInfo.objects.filter(user_info__user_id=request.user),
-#             prefix='profession'
-#         )
-# 
-#     context['is_exist_personal'] = ResumePersonalInfo.objects.filter(user=request.user).exists()
-#     context['is_exist_educational'] = ResumeEducationInfo.objects.filter(user_info__user_id=request.user).exists()
-#     context['is_exist_professional'] = resume_professional_exist
-#     context['is_exist_skills'] = SkillInfo.objects.filter(user_info__user_id=request.user).exists()
-#     context['is_exist_certi'] = CertificateInfo.objects.filter(user_info__user_id=request.user).exists()
-#     context['professional_instance'] = professional_instance
-#     context['pro_info_form'] = formset_pro
-#     context['user_info'] = ResumePersonalInfo.objects.filter(user_id=request.user.id).first()
-#     return render(request, "user-create-resume-professional.html", context)
 
 
 def user_insert_education_detail(request):
