@@ -138,3 +138,15 @@ STATICFILES_FINDERS = (
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+HOST_BASED_PATH = '127.0.0.1:8000'
+RESET_PASSWORD = 'RESET PASSWORD URL'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'm.rafi.utor@gmail.com'
+EMAIL_HOST_PASSWORD = 'sbfj ibxq cmvx afbe'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False

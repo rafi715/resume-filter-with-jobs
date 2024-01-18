@@ -6,11 +6,13 @@ from collections import Counter
 from datetime import datetime
 
 import html2text
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import login, get_user_model, logout
 from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.views import PasswordChangeView
+from django.core.mail import send_mail
 from django.core.files.storage import FileSystemStorage
 from django.forms import modelformset_factory
 from django.http import HttpResponseRedirect, JsonResponse
@@ -19,7 +21,8 @@ from django.urls import reverse_lazy
 
 from classify_resume.forms import BasicRegForm, LoginForm, JobForm, EmailForm, AppliedJobForm, JobEditForm, \
     CustomPasswordChangeForm, EmailEditForm, ApplicantPersonalInfoForm, ApplicantEducationInfoForm, \
-    ApplicantProfessionalInfoForm, ApplicantCertificateInfoForm, ApplicantSkillInfoForm, CustomForgetPasswordForm
+    ApplicantProfessionalInfoForm, ApplicantCertificateInfoForm, ApplicantSkillInfoForm, CustomForgetPasswordForm, \
+    CustomEmailForgetPasswordForm
 from classify_resume.models import Jobs, ResumePersonalInfo, ResumeEducationInfo, ProfessionalExperienceInfo, SkillInfo, \
     AppliedJob, User, CertificateInfo, EmailContent
 
@@ -78,6 +81,7 @@ def jobs(request):
 
 def custom_logout(request):
     logout(request)
+    messages.info(request, 'USER logout successfully')
     return redirect('index')
 
 
@@ -92,10 +96,10 @@ def register(request):
             password = usr.password
             usr.set_password(password)
             usr.save()
-            messages.info(request, 'Please confirm your email address to complete the registration')
+            messages.success(request, 'USER register successfully')
             return HttpResponseRedirect('/')
         else:
-            messages.error(request, "ERROR! while saving info please retry again")
+            messages.error(request, "Something went wrong, please retry again")
 
     if request.method == 'POST' and 'login_user' in request.POST:
         login_form = LoginForm(request.POST)
@@ -110,13 +114,35 @@ def register(request):
                 else:
                     return HttpResponseRedirect('/user-panel/')
             else:
-                messages.error(request, 'Login credential not matched, please try valid credential.')
+                messages.warning(request, 'Login credential not matched, please try valid credential.')
         else:
             messages.error(request, "Something went wrong please try again")
 
     context['sign_form'] = signup_form
     context['login_form'] = login_form
     return render(request, "signup.html", context)
+
+
+def sent_email_forget(request):
+    context = {}
+    forget_email_form = CustomEmailForgetPasswordForm()
+    if request.method == 'POST':
+        forget_email_form = CustomEmailForgetPasswordForm(request.POST)
+        if forget_email_form.is_valid():
+            user_email = forget_email_form.cleaned_data.get('email')
+            send_mail(
+                settings.RESET_PASSWORD,
+                f"{ settings.HOST_BASED_PATH }/forget-password/",
+                settings.EMAIL_HOST_USER,
+                [user_email],
+                fail_silently=False,
+            )
+            messages.info(request, 'Please check email for reset password')
+            return redirect('index')
+        else:
+            messages.error(request, 'Please enter authentic email')
+    context['forget_email_form'] = forget_email_form
+    return render(request, "forget-email-password.html", context)
 
 
 def custom_forget_password(request):
@@ -130,7 +156,10 @@ def custom_forget_password(request):
             passwd = forget_form.cleaned_data.get('password')
             filter_user.set_password(passwd)
             filter_user.save()
+            messages.success(request, 'USER password reset successfully')
             return redirect('register')
+        else:
+            messages.error(request, 'Please enter valid data')
 
     context['forget_form'] = forget_form
     return render(request, "forget-password.html", context)
@@ -143,17 +172,16 @@ def job_detail(request, job_id):
     return render(request, "job-details.html", context)
 
 
-def admin_required(view_func):
-    @user_passes_test(lambda user: user.groups.filter(name='Admin').exists(), login_url='register', redirect_field_name=None)
-    def wrapped_view(request, *args, **kwargs):
-        if not request.user.groups.filter(name='Admin').exists():
-            messages.error(request, 'You do not have permission to access this page.')
-        return view_func(request, *args, **kwargs)
-    return wrapped_view
+# def admin_required(view_func):
+#     @user_passes_test(lambda user: user.groups.filter(name='Admin').exists(), login_url='register', redirect_field_name=None)
+#     def wrapped_view(request, *args, **kwargs):
+#         if not request.user.groups.filter(name='Admin').exists():
+#             messages.error(request, 'You do not have permission to access this page.')
+#         return view_func(request, *args, **kwargs)
+#     return wrapped_view
 
 
 @login_required(login_url='register')
-# @admin_required
 def admins_panel(request):
     context = {
         'jobs': Jobs.objects.filter(user=request.user)

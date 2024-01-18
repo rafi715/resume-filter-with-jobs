@@ -41,23 +41,31 @@
 
     <!-- Template Main CSS File -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/alerts-style.css' %}" rel="stylesheet">
     {% block page-styles %}{% endblock %}
 </head>
 <body>
+    {% if messages %}
+        <div class="container messages">
+            {% for message in messages %}
+                {% if message.tags == 'info' %}
+                    {% include 'alert-info.html' %}
+                {% elif message.tags == 'success' %}
+                    {% include 'alert-success.html' %}
+                {% elif message.tags == 'warning' %}
+                    {% include 'alert-warning.html' %}
+                {% else %}
+                    {% include 'alert-danger.html' %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
     {% block hero-section %}{% endblock %}
 
     {% include 'main-header.html' %}
 
-    <main id="main">
-        {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        {% block page-content %}{% endblock %}
-    </main>
+    <main id="main">{% block page-content %}{% endblock %}</main>
 
     {% include 'main-footer.html' %}
 
@@ -76,6 +84,13 @@
     <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
     <!-- Template Main JS File -->
     <script src="{% static 'js/main.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'js/1.11.3.jquery.min.js' %}"></script>
+    <script>
+        $(".close").click(function(){
+            $(this).parent().fadeOut();
+        });
+    </script>
     {% block page-scripts %}{% endblock %}
 </body>
 </html>
